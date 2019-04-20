@@ -26,3 +26,21 @@
         return <img src={this.props.poster} />;
 ```        
 자식의 자식컴포넌트에서 this.props로 위의 poster를 가져와서 사용한다.
+
+##Array.map
+array.map은 array를 새로운 array로 만든다.
+그런데 새로운 array로 만들때 리액트는 엘리먼트가 많을 경우 key라는 것을 줘야한다.
+
+(movie, index) => { return ( somethingggsdagf )}
+일때 movie는 현 싸이클의 현재 엘리먼트를 의미한다.
+    index는 우리가 현재 제공하는 리스트의 숫자 번째를 의미.
+
+##PropTypes
+  static propTypes = {
+    title: PropTypes.number,
+    poster: PropTypes.string
+  };
+부모 컴포넌트가 string이나 number같은 것을 보내면 PropTypes로 string이 아닌지 맞는지 체크
+  PropTypes.isRequired를 추가하면 필수조건인 prop이 없으면 에러메시지를 띄워준다.  
+  [x] .isRequired 정보가 있는지 없는지
+  [x] .string.number ... 정보의 종류가 무엇인지.
