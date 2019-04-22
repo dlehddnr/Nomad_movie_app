@@ -23,7 +23,7 @@ class App extends Component {
       .catch(error => console.log(error));
   };
 
-  _renderMoives = () => {
+  _renderMovies = () => {
     const movies = this.state.movies.map(movie => {
       return (
         <Movie
@@ -39,9 +39,12 @@ class App extends Component {
   };
 
   render() {
+    const { movies } = this.state;
     return (
       <div className="App">
-        {this.state.movies ? this._renderMoives() : "Loading"}
+        <div className={movies ? "App" : "App--loading"}>
+          {movies ? this._renderMovies() : "Loading"}
+        </div>
       </div>
     );
   }

@@ -1,2 +1,14 @@
 .App {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* flex-wrap : wrap을 쓰니까 가로로만 있던게 가로 2개 나머지는 세로로 되었다. */
+  padding: 50px;
+}
+
+.App--loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
