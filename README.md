@@ -1,6 +1,6 @@
-  #Component
+  # Component
 
-   ##부모 컴포넌트
+   ## 부모 컴포넌트
 
   ```
         <div className="App">
@@ -13,7 +13,7 @@
 
   부모컴포넌트에서 title과 poster 가 있다.
 
-  ##자식 컴포넌트
+  ## 자식 컴포넌트
 
   ```
         <div>
@@ -25,7 +25,7 @@
   자식컴포넌트에서 this.props로 title을 가져와서 사용한다.
   자식컴포넌트에서 this.props로 poster를 가져와서 poster에 저장한다.
 
-  ##자식의 자식 컴포넌트
+  ## 자식의 자식 컴포넌트
 
   ```
           return <img src={this.props.poster} />;
@@ -33,7 +33,7 @@
 
   자식의 자식컴포넌트에서 this.props로 위의 poster를 가져와서 사용한다.
 
-  ##Array.map
+  ## Array.map
   array.map은 array를 새로운 array로 만든다.
   그런데 새로운 array로 만들때 리액트는 엘리먼트가 많을 경우 key라는 것을 줘야한다.
 
@@ -41,7 +41,7 @@
   일때 movie는 현 싸이클의 현재 엘리먼트를 의미한다.
   index는 우리가 현재 제공하는 리스트의 숫자 번째를 의미.
 
-  ##PropTypes
+  ## PropTypes
   static propTypes = {
   title: PropTypes.number,
   poster: PropTypes.string
@@ -51,17 +51,17 @@
   [x] .isRequired 정보가 있는지 없는지
   [x] .string.number ... 정보의 종류가 무엇인지.
 
-  ##Component Life Cycle
+  ## Component Life Cycle
   componentWillMount() -> render() -> componentDidMount() 순으로 진행
   willMount 에서 api 요청 -> render() -> 이런식으로 씀
-  ###Update
+  ### Update
   componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate(로딩표시) -> render() -> componentDidUpdate()
 
-  ##State
+  ## State
   컴포넌트 안에 state가 바뀔 때 마다 render이 실행된다.
-  ###this.setState
+  ### this.setState
   state를 변경할때는 직접적으로 변경하지말고 this.setState를 써준다.
-  ###...this.state
+  ### ...this.state
   이전 state는 그대로 두고 추가하려고 할 때 ... 해준다.
 
   ### this.state / this.props
@@ -70,7 +70,7 @@
   State are properties from inside the component.
 
 
-  ##4-3강 loading state
+  ## 4-3강 loading state
 
   ```
   {this.state.movies ? this._renderMoives() : "Loading"}
@@ -79,7 +79,7 @@
   에서 this.state.movies가 처음에는 없어서 loading 되다가 2초후에 this.setState로 movies가 추가되면서
   render() 가 재실행되고 다시 this.state.movies를 체크할때 존재해서 보이게된다
 
-  ##5강 dumb vs smart component
+  ## 5강 dumb vs smart component
   모든 컴포넌트가 state가 있는것은 아니다. 어떤 컴포넌트는 stateless functional 컴포넌트 이다.
 
   dumb : props 만 가지고있음, function render없음, 라이프사이클 없음 Only return
