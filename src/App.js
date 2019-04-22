@@ -1,40 +1,46 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Movie from "./Movie.js";
 
-const movies = [
-  {
-    title: "Star-Wars",
-    poster:
-      "https://lumiere-a.akamaihd.net/v1/images/the-last-jedi-theatrical-poster-tall-a_6a776211.jpeg?region=0%2C53%2C1536%2C768&width=960"
-  },
-  {
-    title: "Iron-Man",
-    poster:
-      "https://www.sideshow.com/storage/product-images/903421/iron-man_marvel_gallery_5c4cced10da7f.jpg"
-  },
-  {
-    title: "Avengers",
-    poster:
-      "https://ichef.bbci.co.uk/news/660/cpsprodpb/13A26/production/_106022408_avnegers976.jpg"
-  },
-  {
-    title: "Dark-Knight",
-    poster:
-      "https://cdn3.movieweb.com/i/article/MDBokXUxOlvIIVBrPF2PenwAFlajFG/798:50/Dark-Knight-Movie-10th-Anniversary-Theatrical-Rerelease.jpg"
-  }
-];
-
 class App extends Component {
+  state = {};
+
+  componentDidMount() {
+    this._getMovies();
+  }
+
+  _getMovies = async () => {
+    const movies = await this._callApi();
+    console.log(movies);
+    this.setState({
+      movies
+    });
+  };
+
+  _callApi = () => {
+    return fetch("https://yts.am/api/v2/list_movies.json?sort_by=rating")
+      .then(response => response.json())
+      .then(json => json.data.movies)
+      .catch(error => console.log(error));
+  };
+
+  _renderMoives = () => {
+    const movies = this.state.movies.map(movie => {
+      return (
+        <Movie
+          title={movie.title}
+          poster={movie.large_cover_image}
+          key={movie.id}
+        />
+      );
+    });
+    return movies;
+  };
+
   render() {
     return (
       <div className="App">
-        {movies.map((movie, index) => {
-          return (
-            <Movie title={movie.title} poster={movie.poster} key={index} />
-          );
-        })}
+        {this.state.movies ? this._renderMoives() : "Loading"}
       </div>
     );
   }
