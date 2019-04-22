@@ -11,7 +11,6 @@ class App extends Component {
 
   _getMovies = async () => {
     const movies = await this._callApi();
-    console.log(movies);
     this.setState({
       movies
     });
@@ -29,8 +28,10 @@ class App extends Component {
       return (
         <Movie
           title={movie.title}
-          poster={movie.large_cover_image}
+          poster={movie.medium_cover_image}
           key={movie.id}
+          genres={movie.genres}
+          synopsis={movie.synopsis}
         />
       );
     });
